@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encuesta Tecnológica</title>
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📝 Encuesta Tecnológica</h1>
+            <p>¡Ayúdanos a mejorar compartiendo tus preferencias!</p>
+        </div>
+        
+        <form id="surveyForm">
+            <!-- Sección 1: Datos Personales -->
+            <fieldset class="personal-data">
+                <legend class="legend-1">👤 Datos Personales</legend>
+                
+                <div class="form-group">
+                    <label for="name">Nombre:</label>
+                    <input type="text" id="name" name="name" placeholder="Tu nombre completo" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="age">Edad:</label>
+                    <input type="number" id="age" name="age" min="1" max="120" placeholder="18" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Género:</label>
+                    <div class="radio-group">
+                        <label class="radio-option"><input type="radio" name="gender" value="masculino" required> Masculino</label>
+                        <label class="radio-option"><input type="radio" name="gender" value="femenino"> Femenino</label>
+                        <label class="radio-option"><input type="radio" name="gender" value="otro"> Otro</label>
+                        <label class="radio-option"><input type="radio" name="gender" value="prefiero-no-decir"> Prefiero no decir</label>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Sección 2: Preguntas de Selección Múltiple -->
+            <fieldset class="questions">
+                <legend class="legend-2">💻 Preguntas Tecnológicas</legend>
+                
+                <div class="form-group">
+                    <p>¿Cuál es tu sistema operativo favorito?</p>
+                    <div class="radio-group os-options">
+                        <label class="radio-option"><input type="radio" name="os" value="windows" required> Windows</label>
+                        <label class="radio-option"><input type="radio" name="os" value="macos"> MacOS</label>
+                        <label class="radio-option"><input type="radio" name="os" value="linux"> Linux</label>
+                        <label class="radio-option"><input type="radio" name="os" value="otro"> Otro</label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <p>¿Qué tecnologías utilizas? (Puedes seleccionar varias):</p>
+                    <div class="checkbox-group tech-options">
+                        <label class="checkbox-option"><input type="checkbox" name="tech" value="html"> HTML</label>
+                        <label class="checkbox-option"><input type="checkbox" name="tech" value="css"> CSS</label>
+                        <label class="checkbox-option"><input type="checkbox" name="tech" value="javascript"> JavaScript</label>
+                        <label class="checkbox-option"><input type="checkbox" name="tech" value="python"> Python</label>
+                        <label class="checkbox-option"><input type="checkbox" name="tech" value="java"> Java</label>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Sección 3: Comentarios Finales -->
+            <fieldset class="comments">
+                <legend class="legend-3">💬 Comentarios Finales</legend>
+                
+                <div class="form-group">
+                    <label for="comments">¡Nos encantaría escuchar tus sugerencias!</label>
+                    <textarea id="comments" name="comments" rows="5" placeholder="Escribe aquí tus comentarios..."></textarea>
+                </div>
+            </fieldset>
+
+            <!-- Botones de acción -->
+            <div class="button-group">
+                <button type="reset" class="btn reset-btn">🧹 Limpiar</button>
+                <button type="submit" class="btn submit-btn">🚀 Enviar Encuesta</button>
+            </div>
+        </form>
+        
+        <div class="footer">
+            <p>© 2023 Encuesta Tecnológica | Todos los derechos reservados</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('surveyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Animación de confeti al enviar
+            const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#ffbe76', '#a55eea'];
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'fixed';
+                confetti.style.width = '10px';
+                confetti.style.height = '10px';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.borderRadius = '50%';
+                confetti.style.left = Math.random() * window.innerWidth + 'px';
+                confetti.style.top = '-10px';
+                confetti.style.zIndex = '9999';
+                confetti.style.animation = `fall ${Math.random() * 3 + 2}s linear forwards`;
+                
+                document.body.appendChild(confetti);
+                
+                setTimeout(() => {
+                    confetti.remove();
+                }, 5000);
+            }
+            
+            alert('¡Gracias por completar nuestra encuesta! ✨');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
